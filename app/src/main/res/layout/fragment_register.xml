@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.10" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/v2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.90" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/h1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.85" />
+
+    <!-- Full Name -->
+
+    <TextView
+        android:id="@+id/registertevname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:text="@string/full_name"
+        android:textAppearance="@style/TextAppearance"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/registeredtname"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:background="@drawable/text_box_shape"
+        android:inputType="textPersonName"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintEnd_toStartOf="@id/v2"
+        app:layout_constraintTop_toBottomOf="@id/registertevname" />
+
+    <!-- Mobile Number -->
+
+    <TextView
+        android:id="@+id/registertevmobile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:text="@string/mobile_number"
+        android:textAppearance="@style/TextAppearance"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintTop_toBottomOf="@id/registeredtname" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/registeredtmobile"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:background="@drawable/text_box_shape"
+        android:inputType="phone"
+        android:maxLength="10"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintEnd_toStartOf="@id/v2"
+        app:layout_constraintTop_toBottomOf="@id/registertevmobile" />
+
+    <!-- Email -->
+
+    <TextView
+        android:id="@+id/registertevemail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:text="@string/emailId"
+        android:textAppearance="@style/TextAppearance"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintTop_toBottomOf="@id/registeredtmobile" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/registeredtemail"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:background="@drawable/text_box_shape"
+        android:inputType="textEmailAddress"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintEnd_toStartOf="@id/v2"
+        app:layout_constraintTop_toBottomOf="@id/registertevemail" />
+
+    <!-- Password -->
+
+    <TextView
+        android:id="@+id/registertevpassword"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:text="@string/password"
+        android:textAppearance="@style/TextAppearance"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintTop_toBottomOf="@id/registeredtemail" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/registeredtpassword"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:background="@drawable/text_box_shape"
+        android:drawableEnd="@drawable/outline_disabled_visible_24"
+        android:drawablePadding="10dp"
+        android:inputType="textPassword"
+        android:paddingStart="15dp"
+        android:paddingEnd="15dp"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintEnd_toStartOf="@id/v2"
+        app:layout_constraintTop_toBottomOf="@id/registertevpassword" />
+
+    <!-- Register Button -->
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/registerbtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:background="@color/color_primary"
+        android:text="@string/register"
+        android:textColor="@color/white"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintEnd_toEndOf="@id/v2"
+        app:layout_constraintTop_toBottomOf="@id/registeredtpassword" />
+
+    <!-- Go back to Login -->
+
+    <TextView
+        android:id="@+id/registertevhaveaccount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:text="@string/have_account"
+        android:textAppearance="@style/TextAppearance"
+        android:textColor="@color/secondary_color"
+        app:layout_constraintStart_toStartOf="@id/v1"
+        app:layout_constraintEnd_toEndOf="@id/v2"
+        app:layout_constraintTop_toBottomOf="@id/registerbtn" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

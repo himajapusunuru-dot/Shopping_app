@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">ECommerceApp</string>
+    <string name="LoginTitle">LOGIN</string>
+    <string name="emailId">Email Id</string>
+    <string name="password">Password</string>
+    <string name="forgotPassword">FORGOT PASSWORD</string>
+    <string name="dontHaveAccount">I DON\'T HAVE ACCOUNT</string>
+    <string name="register">REGISTER</string>
+    <string name="full_name">Full Name</string>
+    <string name="mobile_number">Mobile No</string>
+    <string name="have_account">I HAVE AN ACCOUNT</string>
+</resources>

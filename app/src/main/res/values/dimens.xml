@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="loginImageWidth">110dp</dimen>
+    <dimen name="loginImageHeight">110dp</dimen>
+    <dimen name="LoginAndRegisterTopMargin">16dp</dimen>
+    <dimen name="homeFragmentHeight">56dp</dimen>
+    <dimen name="Margins">12dp</dimen>
+    <dimen name="searchTextSize">16sp</dimen>
+    <dimen name="PaddingEnd">8dp</dimen>
+    <dimen name="padding">8dp</dimen>
+    <dimen name="paddingItemCategory">10dp</dimen>
+    <dimen name="imageMargins">150dp</dimen>
+</resources>
