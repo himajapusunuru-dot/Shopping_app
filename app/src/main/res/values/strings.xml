@@ -9,4 +9,16 @@
     <string name="full_name">Full Name</string>
     <string name="mobile_number">Mobile No</string>
     <string name="have_account">I HAVE AN ACCOUNT</string>
+    <string name="search_categories">Search Categories</string>
+    <string name="search">Search</string>
+    <string name="close_search">Close</string>
+    <string name="category_image">CategoryImage</string>
+    <string name="product_image">productImage</string>
+    <string name="add_to_cart">ADD TO CART</string>
+    <string name="home">Home</string>
+    <string name="cart">Cart</string>
+    <string name="orders">Orders</string>
+    <string name="profile">Profile</string>
+    <string name="logout">Logout</string>
+    <string name="phonename">RealMe Nazro 50</string>
 </resources>

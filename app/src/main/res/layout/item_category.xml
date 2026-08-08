@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="6dp"
     app:cardBackgroundColor="@color/white"
@@ -24,13 +24,13 @@
             android:id="@+id/categoryImage"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            android:contentDescription="Category image"
+            android:contentDescription="@string/category_image"
             android:scaleType="fitCenter"
             tools:src="@drawable/cart" />
 
         <TextView
             android:id="@+id/categoryName"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
