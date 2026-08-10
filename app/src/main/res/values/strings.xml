@@ -21,4 +21,6 @@
     <string name="profile">Profile</string>
     <string name="logout">Logout</string>
     <string name="phonename">RealMe Nazro 50</string>
+    <string name="homeSuperCart">SUPER CART\n\n</string>
+    <string name="products">PRODUCTS</string>
 </resources>

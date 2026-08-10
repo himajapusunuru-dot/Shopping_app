@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
+    <fragment android:id="@+id/loginFragment"
+        android:name="com.code4galaxy.ecommerceapp.view.LoginFragment"
+        android:label="@string/LoginTitle"
+        tools:layout="@layout/fragment_login">
+        <action
+            android:id="@+id/action_loginFragment_to_registerFragment"
+            app:destination="@+id/registerFragment">
+
+        </action>
+        <action
+            android:id="@+id/action_loginFragment_to_homeFragment"
+            app:destination="@+id/homeFragment"
+            app:popUpTo="@string/LoginTitle"
+            app:popUpToInclusive="true">
+        </action>
+    </fragment>
+    <fragment
+        android:id="@+id/registerFragment"
+        android:name="com.code4galaxy.ecommerceapp.view.RegisterFragment"
+        android:label="@string/register"
+        tools:layout="@layout/fragment_register">
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.code4galaxy.ecommerceapp.view.HomeFragment"
+        android:label="@string/homeSuperCart"
+        tools:layout="@layout/fragment_home">
+        <action
+            android:id="@+id/action_homeFragment_to_productListFragment"
+            app:destination="@+id/productListFragment"/>
+    </fragment>
+    <fragment
+        android:id="@id/productListFragment"
+        android:name="com.code4galaxy.ecommerceapp.view.ProductListFragment"
+        android:label="@string/products"
+        tools:layout="@layout/fragment_product_list">
+        <action
+            android:id="@+id/action_productListFragment_to_productDetailsFragment"
+            app:destination="@+id/productDetailsFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/productDetailsFragment"
+        android:name="com.code4galaxy.ecommerceapp.view.ProductDetailsFragment"
+        android:label="DETAILS"
+        tools:layout="@layout/fragment_product_details">
+        <argument
+            android:name="productId"
+            app:argType="string" />
+
+    </fragment>
+
+
+</navigation>

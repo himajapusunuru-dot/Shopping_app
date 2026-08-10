@@ -13,11 +13,11 @@
         android:theme="@style/Theme.ECommerceApp">
         <activity
             android:name=".MainActivity"
-            android:exported="true"
+            android:exported="false"
             android:windowSoftInputMode="adjustResize">
         </activity>
         <activity
-            android:name=".SplashActivity"
+            android:name=".view.SplashActivity"
             android:exported="true"
             android:windowSoftInputMode="adjustResize">
             <intent-filter>

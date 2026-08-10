@@ -121,7 +121,6 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
         android:background="@drawable/text_box_shape"
-        android:drawableEnd="@drawable/outline_disabled_visible_24"
         android:drawablePadding="10dp"
         android:inputType="textPassword"
         android:paddingStart="15dp"
@@ -129,6 +128,17 @@
         app:layout_constraintStart_toStartOf="@id/v1"
         app:layout_constraintEnd_toStartOf="@id/v2"
         app:layout_constraintTop_toBottomOf="@id/registertevpassword" />
+    <ImageView
+        android:id="@+id/imgShowPassword"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/outline_disabled_visible_24"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="@id/registeredtpassword"
+        app:layout_constraintTop_toTopOf="@id/registeredtpassword"
+        app:layout_constraintBottom_toBottomOf="@id/registeredtpassword"
+        />
+
 
     <!-- Register Button -->
 

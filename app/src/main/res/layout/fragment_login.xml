@@ -41,7 +41,7 @@
     <EditText
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/edttxtemailid"
+        android:id="@+id/edttxtemailidlogin"
         android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
         app:layout_constraintTop_toBottomOf="@id/txtviewemailid"
         app:layout_constraintStart_toStartOf="@id/v1"
@@ -54,43 +54,55 @@
         android:text="@string/password"
         android:id="@+id/txtviewpassword"
         app:layout_constraintStart_toStartOf="@id/v1"
-        app:layout_constraintTop_toBottomOf="@id/edttxtemailid"
+        app:layout_constraintTop_toBottomOf="@id/edttxtemailidlogin"
         android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
         />
     <androidx.appcompat.widget.AppCompatEditText
-        android:drawableEnd="@drawable/outline_disabled_visible_24"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:id="@+id/edttxtpassword"
+        android:id="@+id/edttxtpasswordlogin"
         android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
+        android:inputType="textPassword"
         app:layout_constraintTop_toBottomOf="@id/txtviewpassword"
         app:layout_constraintStart_toStartOf="@id/v1"
         app:layout_constraintEnd_toStartOf="@id/v2"
         android:background="@drawable/text_box_shape"
         />
+    <ImageView
+        android:id="@+id/imgShowPassword"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:src="@drawable/outline_disabled_visible_24"
+        android:layout_marginEnd="12dp"
+        app:layout_constraintEnd_toEndOf="@id/edttxtpasswordlogin"
+        app:layout_constraintTop_toTopOf="@id/edttxtpasswordlogin"
+        app:layout_constraintBottom_toBottomOf="@id/edttxtpasswordlogin" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/secondary_color"
         android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"
         android:text="@string/forgotPassword"
-        android:id="@+id/forgotPassword"
+        android:id="@+id/forgotPasswordlogin"
         android:textAppearance="@style/TextAppearance"
         app:layout_constraintStart_toStartOf="@id/v1"
-        app:layout_constraintTop_toBottomOf="@id/edttxtpassword"/>
+        app:layout_constraintTop_toBottomOf="@id/edttxtpasswordlogin"/>
     <androidx.appcompat.widget.AppCompatButton
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@color/color_primary"
         android:text="@string/LoginTitle"
+        android:id="@+id/btnLogin"
         android:textColor="@color/white"
         app:layout_constraintStart_toStartOf="@id/v1"
         app:layout_constraintEnd_toEndOf="@id/v2"
-        app:layout_constraintTop_toBottomOf="@id/forgotPassword"
+        app:layout_constraintTop_toBottomOf="@id/forgotPasswordlogin"
         android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/iDontHaveAccount"
         android:text="@string/dontHaveAccount"
         android:textColor="@color/secondary_color"
         android:textAppearance="@style/TextAppearance"
