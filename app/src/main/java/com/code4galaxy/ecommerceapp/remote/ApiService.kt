@@ -2,11 +2,13 @@ package com.code4galaxy.ecommerceapp.remote
 
 import com.code4galaxy.ecommerceapp.request.LoginRequest
 import com.code4galaxy.ecommerceapp.request.RegisterRequest
+import com.code4galaxy.ecommerceapp.response.CategoryResponse
 import com.code4galaxy.ecommerceapp.response.LoginResponse
 import com.code4galaxy.ecommerceapp.response.RegisterResponse
 import com.code4galaxy.ecommerceapp.view.RegisterFragment
 import retrofit2.Response
 import retrofit2.http.Body
+import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
@@ -23,4 +25,6 @@ interface ApiService {
     suspend fun registerUser(
         @Body registerRequest: RegisterRequest
     ) : Response<RegisterResponse>
+    @GET("Category")
+    suspend fun  getProductCategories(): Response<CategoryResponse>
 }

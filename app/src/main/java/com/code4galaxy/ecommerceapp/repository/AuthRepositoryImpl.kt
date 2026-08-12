@@ -3,6 +3,7 @@ package com.code4galaxy.ecommerceapp.repository
 import com.code4galaxy.ecommerceapp.remote.ApiService
 import com.code4galaxy.ecommerceapp.request.LoginRequest
 import com.code4galaxy.ecommerceapp.request.RegisterRequest
+import com.code4galaxy.ecommerceapp.response.CategoryResponse
 import com.code4galaxy.ecommerceapp.response.LoginResponse
 import com.code4galaxy.ecommerceapp.response.RegisterResponse
 
@@ -24,5 +25,7 @@ class AuthRepositoryImpl(private val apiService: ApiService) : AuthRepository {
         }
         return response.body() ?: throw RuntimeException("Empty response from server")
     }
+
+
 
 }
