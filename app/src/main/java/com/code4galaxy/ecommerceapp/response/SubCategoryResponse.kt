@@ -7,7 +7,7 @@ data class SubCategoryResponse(
     @SerializedName("message")
     val message: String,
     @SerializedName("status")
-    val status: Int,
+    var status: Int,
     @SerializedName("subcategories")
     val subcategories: List<Subcategory>
 )

@@ -3,6 +3,7 @@ package com.code4galaxy.ecommerceapp.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
 import com.code4galaxy.ecommerceapp.UiState
@@ -62,4 +63,11 @@ class AuthViewModel(private val repository: AuthRepository ): ViewModel() {
 
 
 
+}
+
+class AuthVMFactory(val repo : AuthRepository): ViewModelProvider.NewInstanceFactory() {
+    @Suppress("UNCHECKED_CAST")
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        return AuthViewModel(repo) as T
+    }
 }

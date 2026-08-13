@@ -11,15 +11,12 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.code4galaxy.ecommerceapp.R
 import com.code4galaxy.ecommerceapp.UiState
-import com.code4galaxy.ecommerceapp.databinding.ActivityMainBinding
 import com.code4galaxy.ecommerceapp.databinding.FragmentLoginBinding
 import com.code4galaxy.ecommerceapp.remote.RetrofitBuilder
-import com.code4galaxy.ecommerceapp.repository.AuthRepository
 import com.code4galaxy.ecommerceapp.repository.AuthRepositoryImpl
 import com.code4galaxy.ecommerceapp.utils.SessionManager
 import com.code4galaxy.ecommerceapp.viewmodel.AuthVMFactory
 import com.code4galaxy.ecommerceapp.viewmodel.AuthViewModel
-import retrofit2.Retrofit
 
 class LoginFragment : Fragment() {
     private lateinit var binding: FragmentLoginBinding

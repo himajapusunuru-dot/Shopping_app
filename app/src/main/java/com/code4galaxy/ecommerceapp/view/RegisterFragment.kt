@@ -13,9 +13,7 @@ import androidx.navigation.fragment.findNavController
 import com.code4galaxy.ecommerceapp.UiState
 import com.code4galaxy.ecommerceapp.databinding.FragmentRegisterBinding
 import com.code4galaxy.ecommerceapp.remote.RetrofitBuilder
-import com.code4galaxy.ecommerceapp.repository.AuthRepository
 import com.code4galaxy.ecommerceapp.repository.AuthRepositoryImpl
-import com.code4galaxy.ecommerceapp.utils.SessionManager
 import com.code4galaxy.ecommerceapp.viewmodel.AuthVMFactory
 import com.code4galaxy.ecommerceapp.viewmodel.AuthViewModel
 
@@ -74,11 +72,11 @@ class RegisterFragment : Fragment() {
             val mobileRegex = Regex("^\\d{8,}$")
             val passwordRegex= Regex("^(?=.*[A-Z])(?=.*[^A-Za-z0-9]).{8,}\$")
             if(fullName.isEmpty()){
-                binding.registerbtn.error="Enter Full Name"
+                binding.registeredtname.error="Enter Full Name"
                 return@setOnClickListener
             }
             if(mobileNo.isEmpty()){
-                binding.registerbtn.error="Enter MobileNo."
+                binding.registeredtmobile.error="Enter MobileNo."
                 return@setOnClickListener
             }
             if(!mobileNo.matches(mobileRegex)){
@@ -87,7 +85,7 @@ class RegisterFragment : Fragment() {
                 return@setOnClickListener
             }
             if(email.isEmpty()){
-                binding.registerbtn.error="Enter Email"
+                binding.registeredtemail.error="Enter Email"
                 return@setOnClickListener
             }
             if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
@@ -99,7 +97,7 @@ class RegisterFragment : Fragment() {
             }
 
             if(password.isEmpty()){
-                binding.registerbtn.error="Enter Password"
+                binding.registeredtpassword.error="Enter Password"
                 return@setOnClickListener
 
             }
