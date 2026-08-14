@@ -1,5 +1,6 @@
 package com.code4galaxy.ecommerceapp.view
 
+import android.R.attr.query
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +8,9 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.code4galaxy.ecommerceapp.R
 import com.code4galaxy.ecommerceapp.UiState
 import com.code4galaxy.ecommerceapp.adapters.ProductAdapter
 import com.code4galaxy.ecommerceapp.databinding.FragmentProductListBinding
@@ -127,11 +130,17 @@ class ProductListFragment : Fragment() {
         categoryId?.let {
             viewModel.getSubCategories(it)
         }
+
     }
 
     private fun setupRecylerView() {
         adapter= ProductAdapter{product ->
-            val productId = product.productId
+            val bundle = Bundle().apply {
+                putString("productId",product.productId)
+                putString("categoryId",product.categoryId)
+
+            }
+            findNavController().navigate(R.id.action_productListFragment_to_productDetailsFragment,bundle)
         }
         binding.productRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.productRecyclerView.adapter = adapter

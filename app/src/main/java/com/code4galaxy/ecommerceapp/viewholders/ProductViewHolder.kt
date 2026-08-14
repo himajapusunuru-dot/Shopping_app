@@ -18,7 +18,7 @@ class ProductViewHolder (
         val imageUrl = "http://gminnovex.com/myshop/images/" + product.productImageUrl.trimStart('/')
         Glide.with(binding.productImage.context)
             .load(imageUrl)
-            .error(R.drawable.img)
+            .error(R.drawable.error)
             .into(binding.productImage)
         binding.root.setOnClickListener {
             onProductClick(product)

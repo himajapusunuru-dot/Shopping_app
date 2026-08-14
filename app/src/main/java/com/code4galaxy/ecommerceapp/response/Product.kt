@@ -23,5 +23,13 @@ data class Product(
     @SerializedName("sub_category_id")
     val subCategoryId: String,
     @SerializedName("subcategory_name")
-    val subcategoryName: String
+    val subcategoryName: String,
+    @SerializedName("is_active")
+    val isActive: String,
+    @SerializedName("images")
+    val images: List<Image>,
+    @SerializedName("specifications")
+    val specifications: List<Specification>,
+    @SerializedName("reviews")
+    val reviews: List<Review>
 )

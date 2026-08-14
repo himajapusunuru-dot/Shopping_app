@@ -2,6 +2,7 @@ package com.code4galaxy.ecommerceapp.repository
 
 import com.code4galaxy.ecommerceapp.remote.ApiService
 import com.code4galaxy.ecommerceapp.response.CategoryResponse
+import com.code4galaxy.ecommerceapp.response.ProductDetailsResponse
 import com.code4galaxy.ecommerceapp.response.ProductListResponse
 import com.code4galaxy.ecommerceapp.response.SubCategoryResponse
 
@@ -34,6 +35,18 @@ class ShopRepositoryImpl(private val apiService: ApiService): ShopRepository {
 
         return response.body()
             ?: throw RuntimeException("Empty response")
+    }
+
+    override suspend fun getProductDetails(productId: String): ProductDetailsResponse {
+        val response =
+            apiService.getProductDetails(productId)
+
+        if (!response.isSuccessful) {
+            throw RuntimeException("Unable to load products details")
+        }
+
+        return response.body()
+            ?: throw RuntimeException("Empty product details response")
     }
 
 }

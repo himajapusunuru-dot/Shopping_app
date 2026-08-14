@@ -34,6 +34,9 @@
     <dimen name="productDetailsImageHeight">280dp</dimen>
     <dimen name="specsSize">18dp</dimen>
     <dimen name="specsmarginStart">12dp</dimen>
+    <dimen name="counterSize">32dp</dimen>
+    <dimen name="billAmountText">22dp</dimen>
+    <dimen name="billAmounttextsize">22dp</dimen>
 
 
 </resources>

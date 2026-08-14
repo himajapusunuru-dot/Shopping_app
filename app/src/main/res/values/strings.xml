@@ -24,4 +24,7 @@
     <string name="homeSuperCart">SUPER CART\n\n</string>
     <string name="products">PRODUCTS</string>
     <string name="Searchbtn">Search</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="billAmount">Total Bill Amount</string>
+    <string name="checkout">Checkout</string>
 </resources>

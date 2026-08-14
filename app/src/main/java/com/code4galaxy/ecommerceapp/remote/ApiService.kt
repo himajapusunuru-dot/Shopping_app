@@ -4,6 +4,7 @@ import com.code4galaxy.ecommerceapp.request.LoginRequest
 import com.code4galaxy.ecommerceapp.request.RegisterRequest
 import com.code4galaxy.ecommerceapp.response.CategoryResponse
 import com.code4galaxy.ecommerceapp.response.LoginResponse
+import com.code4galaxy.ecommerceapp.response.ProductDetailsResponse
 import com.code4galaxy.ecommerceapp.response.ProductListResponse
 import com.code4galaxy.ecommerceapp.response.RegisterResponse
 import com.code4galaxy.ecommerceapp.response.SubCategoryResponse
@@ -41,4 +42,8 @@ interface ApiService {
     suspend fun getProducts(
         @Path("sub_category_id") subCatergoryId : String
     ): Response<ProductListResponse>
+    @GET("Product/details/{product_id}")
+    suspend fun getProductDetails(
+        @Path("product_id") productId : String
+    ): Response<ProductDetailsResponse>
 }
