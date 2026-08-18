@@ -13,11 +13,10 @@ import androidx.recyclerview.widget.GridLayoutManager
 import com.code4galaxy.ecommerceapp.UiState
 import com.code4galaxy.ecommerceapp.adapters.CategoryAdapter
 import com.code4galaxy.ecommerceapp.databinding.FragmentHomeBinding
-import com.code4galaxy.ecommerceapp.remote.RetrofitBuilder
+import com.code4galaxy.ecommerceapp.model.remote.RetrofitBuilder
 import com.code4galaxy.ecommerceapp.repository.ShopRepositoryImpl
 import com.code4galaxy.ecommerceapp.utils.hide
 import com.code4galaxy.ecommerceapp.utils.show
-import com.code4galaxy.ecommerceapp.viewmodel.CategoryVMFactory
 import com.code4galaxy.ecommerceapp.viewmodel.CategoryViewModel
 import com.google.android.material.appbar.MaterialToolbar
 
@@ -25,7 +24,7 @@ class HomeFragment: Fragment() {
     private lateinit var binding: FragmentHomeBinding
     private lateinit var categoryAdapter: CategoryAdapter
     private val viewModel: CategoryViewModel by viewModels {
-        CategoryVMFactory(ShopRepositoryImpl(RetrofitBuilder.apiService))
+        CategoryViewModel.CategoryVMFactory(ShopRepositoryImpl(RetrofitBuilder.apiService))
     }
 
     override fun onCreateView(
@@ -63,8 +62,7 @@ class HomeFragment: Fragment() {
     }
 
     fun showSearchContainer() {
-        val toolbar = requireActivity()
-            .findViewById<MaterialToolbar>(R.id.titleMaterialToolBar)
+        val toolbar = activity?.findViewById<MaterialToolbar>(R.id.titleMaterialToolBar) ?: return
         toolbar.setOnMenuItemClickListener { item ->
             when(item.itemId){
                 R.id.searchbtn -> {
@@ -90,7 +88,11 @@ class HomeFragment: Fragment() {
 
                 is UiState.Success ->{
                     binding.progressBar.visibility = View.GONE
-                    categoryAdapter.submitList(state.data.categories)
+                    if (state.data.categories.isEmpty()) {
+                        Toast.makeText(requireContext(), "No categories available", Toast.LENGTH_SHORT).show()
+                    } else {
+                        categoryAdapter.submitList(state.data.categories)
+                    }
                 }
                 is UiState.Error -> {
 

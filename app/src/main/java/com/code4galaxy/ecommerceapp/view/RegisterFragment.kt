@@ -12,7 +12,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.code4galaxy.ecommerceapp.UiState
 import com.code4galaxy.ecommerceapp.databinding.FragmentRegisterBinding
-import com.code4galaxy.ecommerceapp.remote.RetrofitBuilder
+import com.code4galaxy.ecommerceapp.model.remote.RetrofitBuilder
 import com.code4galaxy.ecommerceapp.repository.AuthRepositoryImpl
 import com.code4galaxy.ecommerceapp.viewmodel.AuthVMFactory
 import com.code4galaxy.ecommerceapp.viewmodel.AuthViewModel

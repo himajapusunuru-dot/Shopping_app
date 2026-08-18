@@ -1,8 +1,7 @@
-package com.code4galaxy.ecommerceapp.remote
+package com.code4galaxy.ecommerceapp.model.remote
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 
 object RetrofitBuilder {
     private const val BASE_URL = "http://gminnovex.com/myshop/index.php/"

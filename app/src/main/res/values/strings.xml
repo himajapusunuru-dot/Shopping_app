@@ -27,4 +27,6 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="billAmount">Total Bill Amount</string>
     <string name="checkout">Checkout</string>
+    <string name="mobileName">RealMe Nazro 50</string>
+    <string name="priceofProduct">$ 200</string>
 </resources>

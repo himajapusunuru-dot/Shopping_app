@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:textSize="18sp"
-            tools:text="RealMe Narzo 50"
+            tools:text="@string/mobileName"
             app:layout_constraintStart_toEndOf="@id/cartProductImage"
             app:layout_constraintEnd_toStartOf="@id/cartAmount"
             app:layout_constraintTop_toTopOf="parent" />
@@ -40,7 +40,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="18sp"
-            tools:text="$ 200"
+            tools:text="@string/priceofProduct"
+            android:textColor="@color/secondary_color"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/cartProductName" />
 
@@ -71,7 +72,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
-            tools:text="$ 200"
+            android:textColor="@color/secondary_color"
+            tools:text="@string/priceofProduct"
             app:layout_constraintStart_toEndOf="@id/unitPriceLabel"
             app:layout_constraintTop_toTopOf="@id/unitPriceLabel" />
 
@@ -90,6 +92,7 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:text="-"
+                android:background="@color/color_primary"
                 android:textSize="18sp" />
 
             <TextView
@@ -97,6 +100,7 @@
                 android:layout_width="40dp"
                 android:layout_height="30dp"
                 android:gravity="center"
+                android:textColor="@color/secondary_color"
                 android:text="1" />
 
             <TextView
@@ -105,7 +109,15 @@
                 android:layout_height="30dp"
                 android:gravity="center"
                 android:text="+"
+                android:background="@color/color_primary"
                 android:textSize="18sp" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_to_cart"
+                android:textSize="18sp"
+                android:id="@+id/addToCart"
+                android:visibility="gone"/>
 
         </LinearLayout>
 

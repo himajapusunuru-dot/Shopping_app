@@ -12,13 +12,13 @@ class GenericDiffUtil<T: Any> (
         oldItem : T,
         newItem: T
     ): Boolean{
-        return areItemsTheSame(oldItem,newItem)
+        return areItemsSame(oldItem,newItem)
     }
 
     override fun areContentsTheSame(
         oldItem : T,
         newItem: T
     ): Boolean{
-        return areContentsTheSame(oldItem,newItem)
+        return areContainsSame(oldItem,newItem)
     }
 }

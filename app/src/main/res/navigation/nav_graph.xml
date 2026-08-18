@@ -1,59 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/loginFragment">
-    <fragment android:id="@+id/loginFragment"
+
+    <!-- Login -->
+    <fragment
+        android:id="@+id/loginFragment"
         android:name="com.code4galaxy.ecommerceapp.view.LoginFragment"
         android:label="@string/LoginTitle"
         tools:layout="@layout/fragment_login">
+
         <action
             android:id="@+id/action_loginFragment_to_registerFragment"
-            app:destination="@+id/registerFragment">
+            app:destination="@id/registerFragment" />
 
-        </action>
         <action
             android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@+id/homeFragment"
-            app:popUpTo="@string/LoginTitle"
-            app:popUpToInclusive="true">
-        </action>
+            app:destination="@id/homeFragment"
+            app:popUpTo="@id/loginFragment"
+            app:popUpToInclusive="true" />
+
     </fragment>
+
+
+    <!-- Register -->
     <fragment
         android:id="@+id/registerFragment"
         android:name="com.code4galaxy.ecommerceapp.view.RegisterFragment"
         android:label="@string/register"
-        tools:layout="@layout/fragment_register">
-    </fragment>
+        tools:layout="@layout/fragment_register" />
+
+
+    <!-- Home -->
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.code4galaxy.ecommerceapp.view.HomeFragment"
         android:label="@string/homeSuperCart"
         tools:layout="@layout/fragment_home">
+
         <action
             android:id="@+id/action_homeFragment_to_productListFragment"
-            app:destination="@+id/productListFragment"/>
+            app:destination="@id/productListFragment" />
+
     </fragment>
+
+
+    <!-- Product List -->
     <fragment
-        android:id="@id/productListFragment"
+        android:id="@+id/productListFragment"
         android:name="com.code4galaxy.ecommerceapp.view.ProductListFragment"
         android:label="@string/products"
         tools:layout="@layout/fragment_product_list">
+
         <action
             android:id="@+id/action_productListFragment_to_productDetailsFragment"
-            app:destination="@+id/productDetailsFragment"/>
+            app:destination="@id/productDetailsFragment" />
+
     </fragment>
+
+
+    <!-- Product Details -->
     <fragment
         android:id="@+id/productDetailsFragment"
         android:name="com.code4galaxy.ecommerceapp.view.ProductDetailsFragment"
         android:label="DETAILS"
         tools:layout="@layout/fragment_product_details">
+
         <argument
             android:name="productId"
             app:argType="string" />
 
     </fragment>
 
+
+    <!-- Cart -->
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.code4galaxy.ecommerceapp.view.CartFragment"
+        android:label="Cart"
+        tools:layout="@layout/fragment_cart">
+
+        <action
+            android:id="@+id/action_cartFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+
+    </fragment>
+
+
+    <!-- Checkout Parent -->
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.code4galaxy.ecommerceapp.view.CheckoutFragment"
+        android:label="CHECKOUT"
+        tools:layout="@layout/fragment_checkout">
+        <action
+            android:id="@+id/action_checkoutfragment_to_orderConfirmedFragment"
+            app:destination="@+id/orderConfirmedFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/orderConfirmedFragment"
+        android:name="com.code4galaxy.ecommerceapp.view.OrderConfirmedFragment"
+        android:label="OrderConfirmed"
+        tools:layout="@layout/fragment_order_confirmed" />
+    <fragment
+        android:id="@+id/ordersFragment"
+        android:name="com.code4galaxy.ecommerceapp.view.OrdersFragment"
+        android:label="Orders"
+        tools:layout="@layout/fragment_orders" />
+
+
+<!--    &lt;!&ndash; Profile &ndash;&gt;-->
+<!--    <fragment-->
+<!--        android:id="@+id/profileFragment"-->
+<!--        android:name="com.code4galaxy.ecommerceapp.view.ProfileFragment"-->
+<!--        android:label="Profile"-->
+<!--        tools:layout="@layout/fragment_profile" />-->
+
+
+<!--    &lt;!&ndash; Orders &ndash;&gt;-->
+<!--    <fragment-->
+<!--        android:id="@+id/ordersFragment"-->
+<!--        android:name="com.code4galaxy.ecommerceapp.view.OrdersFragment"-->
+<!--        android:label="Orders"-->
+<!--        tools:layout="@layout/fragment_orders" />-->
+
+
+    <!-- Global Cart Navigation -->
+    <action
+        android:id="@+id/action_global_cartFragment"
+        app:destination="@id/cartFragment" />
 
 </navigation>

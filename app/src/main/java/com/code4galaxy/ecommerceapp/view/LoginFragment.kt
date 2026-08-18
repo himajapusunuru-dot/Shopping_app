@@ -12,7 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.code4galaxy.ecommerceapp.R
 import com.code4galaxy.ecommerceapp.UiState
 import com.code4galaxy.ecommerceapp.databinding.FragmentLoginBinding
-import com.code4galaxy.ecommerceapp.remote.RetrofitBuilder
+import com.code4galaxy.ecommerceapp.model.remote.RetrofitBuilder
 import com.code4galaxy.ecommerceapp.repository.AuthRepositoryImpl
 import com.code4galaxy.ecommerceapp.utils.SessionManager
 import com.code4galaxy.ecommerceapp.viewmodel.AuthVMFactory
@@ -48,18 +48,23 @@ class LoginFragment : Fragment() {
             when(state){
                 UiState.Loading ->{
                     binding.btnLogin.isEnabled=false
+                    binding.loginProgressBar.visibility = View.VISIBLE
                 }
                 is UiState.Success->{
                     binding.btnLogin.isEnabled = true
+                    binding.loginProgressBar.visibility = View.GONE
                     val user = state.data.user
                     if(user != null){
                         sessionManager.saveUser(user)
                         Toast.makeText(requireContext(),state.data.message, Toast.LENGTH_SHORT).show()
                         findNavController().navigate(R.id.action_loginFragment_to_homeFragment)
+                    } else {
+                        Toast.makeText(requireContext(), "Login successful but user data missing", Toast.LENGTH_SHORT).show()
                     }
                 }
                 is UiState.Error->{
                     binding.btnLogin.isEnabled = true
+                    binding.loginProgressBar.visibility = View.GONE
                     Toast.makeText(requireContext(),state.message, Toast.LENGTH_SHORT).show()
                 }
                 else -> Unit
@@ -90,6 +95,7 @@ class LoginFragment : Fragment() {
         binding.btnLogin.setOnClickListener {
             val email = binding.edttxtemailidlogin.text.toString().trim()
             val password = binding.edttxtpasswordlogin.text.toString().trim()
+            android.util.Log.d("LoginFragment", "Login clicked with email: $email")
             if(email.isEmpty()){
                 binding.edttxtemailidlogin.error="Enter email"
                 return@setOnClickListener
@@ -98,6 +104,10 @@ class LoginFragment : Fragment() {
                 binding.edttxtpasswordlogin.error="Enter password"
                 return@setOnClickListener
             }
+            // Hide keyboard
+            val imm = requireContext().getSystemService(android.content.Context.INPUT_METHOD_SERVICE) as android.view.inputmethod.InputMethodManager
+            imm.hideSoftInputFromWindow(view?.windowToken, 0)
+
             viewModel.login(email,password)
         }
         binding.iDontHaveAccount.setOnClickListener {

@@ -42,4 +42,16 @@ class SessionManager(val context: Context) {
             .clear()
             .apply()
     }
+    fun saveLatestOrderId(orderId: Int) {
+        sharedPreferences.edit()
+            .putInt("latest_order_id", orderId)
+            .apply()
+    }
+
+    fun getLatestOrderId(): Int {
+        return sharedPreferences.getInt(
+            "latest_order_id",
+            0
+        )
+    }
 }

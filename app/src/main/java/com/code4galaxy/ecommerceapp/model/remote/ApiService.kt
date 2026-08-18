@@ -1,9 +1,17 @@
-package com.code4galaxy.ecommerceapp.remote
+package com.code4galaxy.ecommerceapp.model.remote
 
+import com.code4galaxy.ecommerceapp.request.AddAddressRequest
 import com.code4galaxy.ecommerceapp.request.LoginRequest
+import com.code4galaxy.ecommerceapp.request.LogoutRequest
+import com.code4galaxy.ecommerceapp.request.PlaceOrderRequest
 import com.code4galaxy.ecommerceapp.request.RegisterRequest
+import com.code4galaxy.ecommerceapp.response.AddAddressResponse
+import com.code4galaxy.ecommerceapp.response.AddressListResponse
 import com.code4galaxy.ecommerceapp.response.CategoryResponse
 import com.code4galaxy.ecommerceapp.response.LoginResponse
+import com.code4galaxy.ecommerceapp.response.LogoutResponse
+import com.code4galaxy.ecommerceapp.response.OrderDetailsResponse
+import com.code4galaxy.ecommerceapp.response.PlaceOrderResponse
 import com.code4galaxy.ecommerceapp.response.ProductDetailsResponse
 import com.code4galaxy.ecommerceapp.response.ProductListResponse
 import com.code4galaxy.ecommerceapp.response.RegisterResponse
@@ -46,4 +54,30 @@ interface ApiService {
     suspend fun getProductDetails(
         @Path("product_id") productId : String
     ): Response<ProductDetailsResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("User/address")
+    suspend fun addAddress(
+        @Body request: AddAddressRequest
+    ): Response<AddAddressResponse>
+    @GET("User/addresses/{user_id}")
+    suspend fun getAddresses(
+        @Path("user_id") userId: String
+    ): Response<AddressListResponse>
+
+    @Headers("Content-Type: application/json")
+    @POST("Order")
+    suspend fun placeOrder(
+        @Body request: PlaceOrderRequest
+    ): Response<PlaceOrderResponse>
+    @Headers("Content-Type: application/json")
+    @POST("User/logout")
+    suspend fun logout(
+        @Body request: LogoutRequest
+    ): Response<LogoutResponse>
+    @GET("Order")
+    suspend fun getOrderDetails(
+        @Query("order_id") orderId: String
+    ): Response<OrderDetailsResponse>
+
 }

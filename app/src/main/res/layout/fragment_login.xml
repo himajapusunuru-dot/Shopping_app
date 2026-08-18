@@ -11,7 +11,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:id="@+id/loginIcon"
-        app:layout_constraintTop_toBottomOf="@id/titleMaterialToolBar"/>
+        app:layout_constraintTop_toTopOf="parent"/>
     <androidx.constraintlayout.widget.Guideline
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -99,6 +99,17 @@
         app:layout_constraintEnd_toEndOf="@id/v2"
         app:layout_constraintTop_toBottomOf="@id/forgotPasswordlogin"
         android:layout_marginTop="@dimen/LoginAndRegisterTopMargin"/>
+
+    <ProgressBar
+        android:id="@+id/loginProgressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

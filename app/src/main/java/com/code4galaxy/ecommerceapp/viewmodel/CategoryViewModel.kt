@@ -19,29 +19,36 @@ class CategoryViewModel(
      val categoryState : LiveData<UiState<CategoryResponse>>
         get() = _categoryState
     fun getCategories(){
+        if (_categoryState.value is UiState.Success) return
         _categoryState.value = UiState.Loading
         viewModelScope.launch(Dispatchers.IO) {
             try {
                 val response = repository.getProductCategories()
+                android.util.Log.d("CategoryViewModel", "Response received: $response")
                 if(response.status == ApiStatus.SUCCESS){
-                    _categoryState.postValue((UiState.Success(response)))
+                    if (response.categories.isEmpty()) {
+                        _categoryState.postValue(UiState.Error("No categories found"))
+                    } else {
+                        _categoryState.postValue((UiState.Success(response)))
+                    }
                 }
                 else{
                     _categoryState.postValue(UiState.Error(response.message))
                 }
 
             }catch (e : Exception){
+                android.util.Log.e("CategoryViewModel", "Error: ${e.message}", e)
                 _categoryState.postValue((UiState.Error(e.message?:"Failed to load Categories")))
             }
         }
 
     }
-
-}
-
-class CategoryVMFactory(private val repo: ShopRepository) : ViewModelProvider.Factory {
-    @Suppress("UNCHECKED_CAST")
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        return CategoryViewModel(repo) as T
+    class CategoryVMFactory(private val repo: ShopRepository) : ViewModelProvider.Factory {
+        @Suppress("UNCHECKED_CAST")
+        override fun <T : ViewModel> create(modelClass: Class<T>): T {
+            return CategoryViewModel(repo) as T
+        }
     }
+
 }
+

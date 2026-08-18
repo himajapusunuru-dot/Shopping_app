@@ -1,6 +1,6 @@
 package com.code4galaxy.ecommerceapp.repository
 
-import com.code4galaxy.ecommerceapp.remote.ApiService
+import com.code4galaxy.ecommerceapp.model.remote.ApiService
 import com.code4galaxy.ecommerceapp.response.CategoryResponse
 import com.code4galaxy.ecommerceapp.response.ProductDetailsResponse
 import com.code4galaxy.ecommerceapp.response.ProductListResponse

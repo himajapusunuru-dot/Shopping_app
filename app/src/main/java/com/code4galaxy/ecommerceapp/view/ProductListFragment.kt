@@ -1,6 +1,5 @@
 package com.code4galaxy.ecommerceapp.view
 
-import android.R.attr.query
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,22 +13,34 @@ import com.code4galaxy.ecommerceapp.R
 import com.code4galaxy.ecommerceapp.UiState
 import com.code4galaxy.ecommerceapp.adapters.ProductAdapter
 import com.code4galaxy.ecommerceapp.databinding.FragmentProductListBinding
-import com.code4galaxy.ecommerceapp.remote.RetrofitBuilder
+import com.code4galaxy.ecommerceapp.model.local.CartDatabase
+import com.code4galaxy.ecommerceapp.model.local.CartItem
+import com.code4galaxy.ecommerceapp.model.remote.RetrofitBuilder
+import com.code4galaxy.ecommerceapp.repository.CartRepositoryImpl
 import com.code4galaxy.ecommerceapp.repository.ShopRepositoryImpl
 import com.code4galaxy.ecommerceapp.response.Subcategory
+import com.code4galaxy.ecommerceapp.utils.SessionManager
 import com.code4galaxy.ecommerceapp.utils.hide
 import com.code4galaxy.ecommerceapp.utils.show
+import com.code4galaxy.ecommerceapp.viewmodel.CartViewModel
 import com.code4galaxy.ecommerceapp.viewmodel.ProductListViewModel
 import com.google.android.material.tabs.TabLayout
 
 class ProductListFragment : Fragment() {
     private lateinit var binding: FragmentProductListBinding
     private lateinit var adapter: ProductAdapter
+    private lateinit var sessionManager: SessionManager
+    private val cartViewModel: CartViewModel by viewModels {
+        CartViewModel.CartVMFactory(CartRepositoryImpl(CartDatabase
+            .getDatabase(requireContext())
+            .cartDao()))
+    }
     private val viewModel : ProductListViewModel by viewModels {
         ProductListViewModel.ProductListVMFactory(
             ShopRepositoryImpl(RetrofitBuilder.apiService)
         )
     }
+
     private var categoryId : String ?=null
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -42,10 +53,26 @@ class ProductListFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        sessionManager = SessionManager(requireContext())
         setupRecylerView()
         getCategoryId()
         observeSubcategories()
         observeProducts()
+        observeCart()
+    }
+
+    private fun observeCart() {
+        val userId = sessionManager.getUserId() ?: return
+        cartViewModel.getActiveCart(userId).observe(viewLifecycleOwner){cart ->
+            if(cart != null){
+                cartViewModel.getCartItems(cart.cartId)
+                    .observe(viewLifecycleOwner){
+                        cartItems -> adapter.updateCartItems(cartItems)
+                    }
+            }else{
+                adapter.updateCartItems(emptyList())
+            }
+        }
     }
 
     private fun observeProducts() {
@@ -134,14 +161,35 @@ class ProductListFragment : Fragment() {
     }
 
     private fun setupRecylerView() {
-        adapter= ProductAdapter{product ->
-            val bundle = Bundle().apply {
-                putString("productId",product.productId)
-                putString("categoryId",product.categoryId)
+        adapter= ProductAdapter(
+            onProductClick = { product ->
+                val bundle = Bundle().apply {
+                    putString("productId",product.productId)
+                    putString("categoryId",product.categoryId)
+                }
+                findNavController().navigate(R.id.action_productListFragment_to_productDetailsFragment,bundle)
+            },
+            onAddToCart = { product ->
+               val userId = sessionManager.getUserId()
+                if(userId!=null){
+                    cartViewModel.addToCart(
+                        userId = userId,
+                        productId = product.productId,
+                        productName = product.productName,
+                        description = product.description,
+                        price = product.price.toDoubleOrNull()?:0.0,
+                        imageUrl = product.productImageUrl
 
+                    )
+                }
+            },
+            onIncrease = { cartItem ->
+                cartViewModel.increaseQuantity(cartItem)
+            },
+            onDecrease = { cartItem ->
+                cartViewModel.decreaseQuantity(cartItem)
             }
-            findNavController().navigate(R.id.action_productListFragment_to_productDetailsFragment,bundle)
-        }
+        )
         binding.productRecyclerView.layoutManager = LinearLayoutManager(requireContext())
         binding.productRecyclerView.adapter = adapter
     }
